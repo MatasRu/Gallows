@@ -2,7 +2,7 @@ let wordsPlace = document.getElementById(`wordsPlace`)
 let checkBtn = document.getElementById(`check`)
 const gallows = document.getElementsByClassName(`gallows`)
 let wrongLett = document.getElementById(`wrongLetters`)
-let wrongLettArr = []
+let wrongLettArr = ["", " "]
 let badAnsw = 0
 let goodAnsw = false
 let goodAnsw2 = false
@@ -36,6 +36,7 @@ function checkChar() {
         }
     }
     console.log(goodAnsw, goodAnsw2)
+    console.log(symbol.value)
     if (goodAnsw === false && goodAnsw2 === true) {
         for (let i = 0; i < wrongLettArr.length; i++) {
             if (symbol.value.toLowerCase() === wrongLettArr[i].toLowerCase()) {
@@ -62,10 +63,14 @@ function checkChar() {
 
 function checkWinLose() {
     if (badAnsw === 5) {
-        console.log("You LOSE")
+        if (confirm("You JUST LOSE THE GAME PRESS OK TO START A NEW GAME")) {
+            window.location.href = "./index.html"
+        }
     }
     let xxx = document.getElementsByClassName("TRUE")
     if (xxx.length === word.length) {
-        console.log("YOU WIN")
+        if (confirm("You JUST WON THE GAME PRESS OK TO START A NEW GAME")) {
+            window.location.href = "./index.html"
+        }
     }
 }

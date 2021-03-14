@@ -1,6 +1,8 @@
 let wordsPlace = document.getElementById(`wordsPlace`)
 let checkBtn = document.getElementById(`check`)
 const gallows = document.getElementsByClassName(`gallows`)
+let wrongLett = document.getElementById(`wrongLetters`)
+let wrongLettArr = []
 let badAnsw = 0
 let goodAnsw = false
 let goodAnsw2 = false
@@ -34,26 +36,36 @@ function checkChar() {
         }
     }
     console.log(goodAnsw, goodAnsw2)
-
     if (goodAnsw === false && goodAnsw2 === true) {
-        badAnsw ++
+        for (let i = 0; i < wrongLettArr.length; i++) {
+            if (symbol.value.toLowerCase() === wrongLettArr[i].toLowerCase()) {
+                symbol.value = ""
+                return
+            }
+        }
+        badAnsw++
         gallows[0].innerHTML = `
     <img src="img/gallows${badAnsw}.jpg" alt="">
-    
-`
+  
+                                `
+        wrongLettArr.push(symbol.value)
+        wrongLett.innerHTML += `${symbol.value}, `
+
     }
+
     checkWinLose()
     goodAnsw = false
     goodAnsw2 = false
     console.log(goodAnsw, goodAnsw2)
+    symbol.value = ""
 }
 
-function checkWinLose () {
+function checkWinLose() {
     if (badAnsw === 5) {
         console.log("You LOSE")
     }
     let xxx = document.getElementsByClassName("TRUE")
-    if (xxx.length === word.length){
+    if (xxx.length === word.length) {
         console.log("YOU WIN")
     }
 }

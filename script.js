@@ -42,8 +42,18 @@ function checkChar() {
     
 `
     }
+    checkWinLose()
     goodAnsw = false
     goodAnsw2 = false
     console.log(goodAnsw, goodAnsw2)
 }
 
+function checkWinLose () {
+    if (badAnsw === 5) {
+        console.log("You LOSE")
+    }
+    let xxx = document.getElementsByClassName("TRUE")
+    if (xxx.length === word.length){
+        console.log("YOU WIN")
+    }
+}
